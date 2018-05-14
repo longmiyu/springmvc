@@ -18,6 +18,5 @@ public class DemoDaoImpl implements DemoDao{
     	mp.put("password", "234");  
 		return mp;
 	}
-
 	
 }
