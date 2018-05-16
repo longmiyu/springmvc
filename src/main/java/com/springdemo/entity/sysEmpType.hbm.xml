@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-5-15 14:54:53 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.springdemo.entity.sysEmpType" table="SYSEMPTYPE">
+        <id name="empTypeId" type="int" access="field">
+            <column name="empTypeId" />
+            <generator class="native" />
+        </id>
+        <property name="uId" type="int">
+            <column name="EMPTYPEID" />
+        </property>
+        <property name="compCode" type="java.lang.String">
+            <column name="COMPCODE" />
+        </property>
+        <property name="empTypeCode" type="java.lang.String">
+            <column name="EMPTYPECODE" />
+        </property>
+        <property name="empTypeName" type="java.lang.String">
+            <column name="EMPTYPENAME" />
+        </property>
+        <property name="empTypeDesc" type="java.lang.String">
+            <column name="EMPTYPEDESC" />
+        </property>
+        <property name="spell" type="java.lang.String">
+            <column name="SPELL" />
+        </property>
+        <property name="isStop" type="java.lang.String">
+            <column name="ISSTOP" />
+        </property>
+    </class>
+</hibernate-mapping>
