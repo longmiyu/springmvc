@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.springdemo.entity.user;
+import com.springdemo.entity.users;
 import com.springdemo.service.DemoService;
 
 @Controller
@@ -43,7 +43,7 @@ public class DemoController {
     };   
     @RequestMapping("/login1")
    @ResponseBody
-    public Map<String,Object> login1 (user u) {
+    public Map<String,Object> login1 (users u) {
     	System.out.println("name:"+u.getName());
     	System.out.println("password:"+u.getPassword());
     	Map<String,Object> mp = new HashMap<String,Object>();
