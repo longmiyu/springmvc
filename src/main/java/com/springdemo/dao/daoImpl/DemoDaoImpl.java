@@ -31,7 +31,7 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 		sql.append("select *from users ");
 		List<Object> re =this.queryListBySql(sql.toString());
 		List<Map<String,Object>> aa = this.queryListMapBySql(sql.toString());
-		
+		 
 		System.out.println(re);
 		Object ob = new Object();
 		System.out.println(ob);
