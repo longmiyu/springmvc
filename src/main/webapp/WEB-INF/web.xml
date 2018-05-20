@@ -34,7 +34,16 @@
         <filter>
 	   <filter-name>SpringOpenSessionInViewFilter</filter-name>
 	   <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+	   <init-param><!--单例模式，可以省略-->
+            <param-name>singleSession</param-name>
+            <param-value>true</param-value>
+        </init-param>
+		<init-param>  
+	           <param-name>flushMode</param-name>  
+	           <param-value>AUTO</param-value>  
+	       </init-param>
 	 </filter>
+	 
   <filter-mapping>
     <filter-name>SpringOpenSessionInViewFilter</filter-name>
     <url-pattern>/*</url-pattern>
