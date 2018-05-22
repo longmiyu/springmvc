@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.transform.Transformers;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Propagation;
@@ -74,7 +75,7 @@ public abstract class HibernateBaseDao extends HibernateDaoSupport{
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> queryListMapBySql(String sql, Object... paramObj) {
 
-		Query query = this.getSession().createSQLQuery(sql);
+		Query query = this.getSession().createNativeQuery(sql);
 
 		if (paramObj != null && paramObj.length > 0) {
 			for (int i = 0; i < paramObj.length; i++) {
@@ -83,13 +84,17 @@ public abstract class HibernateBaseDao extends HibernateDaoSupport{
 		} 
 		return  query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();	 
 	}	  
-	
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW )
+
 	public int updateSql (String sql, Object... paramObj) {
-		Query query =  getSessionFactory().getCurrentSession().createSQLQuery(sql);
-		
-		//Query query = this.getSession().createSQLQuery(sql);
-		query.executeUpdate();
+
+		Session session = getSession();
+		 Transaction tx = session.beginTransaction();
+		 
+		    Query<?> query = session.createNativeQuery(sql);
+		     query.executeUpdate();
+		    tx.commit();
+		    session.close();
+		    
 		return 0;
 		
 	}

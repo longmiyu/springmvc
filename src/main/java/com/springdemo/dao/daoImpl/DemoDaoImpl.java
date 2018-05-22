@@ -33,10 +33,10 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 		sql.append(" select * from sysEmpType ");*/
 /*		List<Object> re =this.queryListBySql(sql.toString());*/
 		sql.append("select *from users ");
-		List<Object> re =this.queryListBySql(sql.toString());
+		List<Object> re =this.queryListBySql(sql.toString()); 
 		List<Map<String,Object>> aa = this.queryListMapBySql(sql.toString());
 		StringBuffer insertSql  = new StringBuffer();
-		insertSql.append(" insert into up_user (user_code,user_name,user_age,user_password)values('001','李四','24','12345678')");
+		insertSql.append(" insert into up_user (uer_code,user_name,user_age,user_password)values('004','李四1','27','12345678')");
 		this.updateSql(insertSql.toString());
 		
 		UpUser up = new UpUser();
