@@ -32,12 +32,12 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 /*		List<sysEmpType> us = (List<sysEmpType>) this.getHibernateTemplate().find("from sysEmpType");
 		sql.append(" select * from sysEmpType ");*/
 /*		List<Object> re =this.queryListBySql(sql.toString());*/
-		sql.append("select *from users ");
+/*		sql.append("select *from users ");
 		List<Object> re =this.queryListBySql(sql.toString()); 
-		List<Map<String,Object>> aa = this.queryListMapBySql(sql.toString());
+		List<Map<String,Object>> aa = this.queryListMapBySql(sql.toString());*/
 		StringBuffer insertSql  = new StringBuffer();
 		insertSql.append(" insert into up_user (uer_code,user_name,user_age,user_password)values('004','¿ÓÀƒ1','27','12345678')");
-		this.updateSql(insertSql.toString());
+		//this.updateSql(insertSql.toString());
 		
 		UpUser up = new UpUser();
 		up.setUerCode("01");
@@ -49,8 +49,8 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 		 getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 	        this.getHibernateTemplate().save(up);  
 		*/
-		List<UpUser> us = (List<UpUser>) this.getHibernateTemplate().find("from UpUser");
-		System.out.println(re);
+//		List<UpUser> us = (List<UpUser>) this.getHibernateTemplate().find("from UpUser");
+//		System.out.println(us);
 		
 		Object ob = new Object();
 		System.out.println(ob);
@@ -58,6 +58,15 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 	  	mp.put("name", "bb");
     	mp.put("password", "aa");  
 		return mp;
+	}
+
+	@Override
+	public List<Map<String, Object>> query() {
+		System.out.println("≤È—Ø");
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from up_user ");
+		
+		return this.queryListMapBySql(sql.toString());
 	}
 	
 }

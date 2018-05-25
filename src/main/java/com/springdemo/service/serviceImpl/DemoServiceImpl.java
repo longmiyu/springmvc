@@ -1,5 +1,6 @@
 package com.springdemo.service.serviceImpl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -26,6 +27,10 @@ public void setDao(DemoDao dao) {
 	public Map<String, Object> queryUser(String name) {
 		System.out.println("service");
 		return dao.queryUser(name);
+	}
+	@Override
+	public List<Map<String, Object>> query() {
+		return dao.query();
 	}
 
 }

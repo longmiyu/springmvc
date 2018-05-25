@@ -12,9 +12,8 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- 配置扫描的包 -->
-	<context:component-scan base-package="com.springdemo.controller" />
-	<context:component-scan base-package="com.springdemo.service" />
-	<context:component-scan base-package="com.springdemo.dao" />
+	<context:component-scan base-package="com.springdemo" />
+
 	
 
 	<!-- 注册HandlerMapper、HandlerAdapter两个映射类 -->

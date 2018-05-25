@@ -1,6 +1,8 @@
 package com.springdemo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -52,4 +54,12 @@ public class DemoController {
     	mp = ds.queryUser(u.getName());
 		return mp;  	
     };
+    
+    @RequestMapping("/query")
+   @ResponseBody
+    public List<Map<String,Object>> query() {
+    	List<Map<String,Object>>MpList = new ArrayList<Map<String,Object>>();
+    	MpList = ds.query();
+		return MpList;	
+	}
 }
