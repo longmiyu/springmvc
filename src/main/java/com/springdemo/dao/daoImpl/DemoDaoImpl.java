@@ -39,11 +39,7 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 		insertSql.append(" insert into up_user (uer_code,user_name,user_age,user_password)values('004','李四1','27','12345678')");
 		//this.updateSql(insertSql.toString());
 		
-		UpUser up = new UpUser();
-		up.setUerCode("01");
-		up.setUserName("张三");
-		up.setUserAge(23);
-		up.setUserPassword("123456");
+
 		/*getHibernateTemplate().save(up);*/
 /*		
 		 getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
@@ -67,6 +63,31 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 		sql.append("select * from up_user ");
 		
 		return this.queryListMapBySql(sql.toString());
+	}
+
+	/**
+	 * 保存数据
+	 */
+	@Override
+	public Map<String, Object> saveUpUser(Map<String, Object> mp) {
+		int result=1;
+		String msg="保存成功!";
+		//{userCode=1001, userName=001, userPassword=1, userAge=23, createDate=2018-05-15, user_type=1, email=122@qq.com, sex=1}
+		StringBuffer insertSql  = new StringBuffer();
+		insertSql.append(" insert into up_user (user_code,user_name,user_password,user_age,create_date,user_type,email,user_sex)values");
+		insertSql.append("('").append(mp .get("userCode")).append("',")
+		.append("'").append(mp .get("userName")).append("',").append("'")
+		.append(mp .get("userPassword")).append("',").append("'").append(mp .get("userAge")).append("',");
+		insertSql.append("'").append(mp .get("createDate")).append("',");
+		insertSql.append("'").append(mp .get("userType")).append("',");
+		insertSql.append("'").append(mp .get("email")).append("',");
+		insertSql.append("'").append(mp .get("sex")).append("')");
+		this.updateSql(insertSql.toString());
+		
+		Map<String,Object> resultMp= new HashMap<String, Object>();
+		resultMp.put("relust", result);
+		resultMp.put("msg", msg);
+		return resultMp;
 	}
 	
 }

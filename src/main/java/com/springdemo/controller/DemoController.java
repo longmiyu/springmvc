@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springdemo.entity.users;
@@ -32,7 +33,7 @@ public class DemoController {
 
 	@RequestMapping("/index")
     public String index(){
-        return "login";
+        return "index";
     }
     
     @RequestMapping("/login")
@@ -62,4 +63,41 @@ public class DemoController {
     	MpList = ds.query();
 		return MpList;	
 	}
+    /**
+     * 用户添加
+     * @param Mp
+     * @return
+     */
+    
+    @RequestMapping("/saveUser")
+    @ResponseBody
+    public String saveUser( Map<String,Object> Mp) {
+    	System.out.println(Mp);
+    	
+		return null;
+    	
+    }
+    /**
+     * 弹出框
+     * @param url
+     * @return
+     */
+    @RequestMapping("/openDilog")
+    public String openDilog(String url) {
+		return url;
+
+	}
+    /**
+     * 保存数据
+     * @param mp
+     * @return
+     */
+    
+    @RequestMapping("/saveUpUser")
+    @ResponseBody
+    public Map<String,Object>  saveUpUser(@RequestBody(required=true) Map<String,Object> mp) {
+    	System.out.println(mp);
+		return ds.saveUpUser(mp);
+    	
+    }
 }

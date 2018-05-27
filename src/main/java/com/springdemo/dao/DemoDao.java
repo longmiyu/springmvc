@@ -10,4 +10,6 @@ public interface DemoDao {
 
 	public List<Map<String, Object>> query();
 
+	public Map<String, Object> saveUpUser(Map<String, Object> mp);
+
 }

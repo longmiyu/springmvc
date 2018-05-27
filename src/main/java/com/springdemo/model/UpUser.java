@@ -16,25 +16,33 @@ public class UpUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="UP_USER_USERID_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="UP_USER_USERID_GENERATOR")
-	@Column(name="user_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id", unique=true, nullable=false, precision=18)
 	private long userId;
 
 	@Column(name="create_date")
 	private Timestamp createDate;
 
-	@Column(name="uer_code")
-	private String uerCode;
+	@Column(length=50)
+	private String email;
 
 	@Column(name="user_age")
 	private int userAge;
 
-	@Column(name="user_name")
+	@Column(name="user_code", nullable=false, length=20)
+	private String userCode;
+
+	@Column(name="user_name", nullable=false, length=20)
 	private String userName;
 
-	@Column(name="user_password")
+	@Column(name="user_password", nullable=false, length=30)
 	private String userPassword;
+
+	@Column(name="user_sex", nullable=false, length=1)
+	private String userSex;
+
+	@Column(name="user_type", length=2)
+	private String userType;
 
 	public UpUser() {
 	}
@@ -55,12 +63,12 @@ public class UpUser implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public Object getUerCode() {
-		return this.uerCode;
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void setUerCode(String uerCode) {
-		this.uerCode = uerCode;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getUserAge() {
@@ -71,7 +79,15 @@ public class UpUser implements Serializable {
 		this.userAge = userAge;
 	}
 
-	public Object getUserName() {
+	public String getUserCode() {
+		return this.userCode;
+	}
+
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
+
+	public String getUserName() {
 		return this.userName;
 	}
 
@@ -79,12 +95,28 @@ public class UpUser implements Serializable {
 		this.userName = userName;
 	}
 
-	public Object getUserPassword() {
+	public String getUserPassword() {
 		return this.userPassword;
 	}
 
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
+	}
+
+	public String getUserSex() {
+		return this.userSex;
+	}
+
+	public void setUserSex(String userSex) {
+		this.userSex = userSex;
+	}
+
+	public String getUserType() {
+		return this.userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 }
