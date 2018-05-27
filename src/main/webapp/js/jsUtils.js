@@ -1,13 +1,27 @@
 /**
  * ajax请求数据
  */
-document.write("<script language=javascript src='jsCommon/jquery-3.2.1.min.js'></script>");
+/*document.write("<script language=javascript src='<%=request.getContextPath()%>/js/query-3.2.1.min.js'></script>");
+document.write("<script language=javascript src='<%=request.getContextPath()%>/js/layer.js'></script>");*/
 //作为对象方法，函数写法，这里创建了两个函数外面用{}包裹起来
 var view = {		
-	run1:function(name){
-		alert(arguments.callee.name)
-		alert(name)
-		alert('这个必须放在一个对象内部，放在外边会出错！');//这里是你函数的内容
+	openDilog:function(param,url){
+		debugger;
+		var title=param.title;
+		var hight=param.hight;
+		var width=param.width;
+		var url=param.url;
+		
+		layer.open({
+			 type: 2,
+		      title: title,
+		      shadeClose: false,
+		      shade: 0.5,
+		      maxmin: true, //开启最大化最小化按钮
+		      anim: 1 ,
+		      area: [hight, width],
+		      content: "openDilog?url="+url+""
+			});	
 		}
 		,run2:function(){
 		alert('这个必须放在一个对象内部，放在外边会出错！');//这里是你函数的内容
@@ -15,6 +29,8 @@ var view = {
 }
 
  function ajaxJson (url,param,dataType,success){
+param =JSON.stringify(param)
+alert(param)
 	ajax({
  	    url:url, //请求地址
  	    type:'POST',   //请求方式
@@ -33,6 +49,7 @@ var view = {
 }
 
 function ajax(options) {
+	debugger;
     /**
      * 传入方式默认为对象
      * */
@@ -52,7 +69,7 @@ function ajax(options) {
     /**
      * 对需要传入的参数的处理
      * */
-    var params = getParams(options.data);
+    var params = options.data;//getParams(options.data);
     var xhr;
     /**
      * 创建一个 ajax请求
@@ -91,7 +108,7 @@ function ajax(options) {
         /**
          * POST请求设置请求头
          * */
-        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded ; charset=utf-8');
+        xhr.setRequestHeader('Content-Type','application/json ;charset=utf-8');
         /**
          * 发送请求参数
          */
@@ -113,3 +130,4 @@ function getParams(data) {
     console.log(arr);
     return arr.join('&');
 }
+

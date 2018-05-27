@@ -22,7 +22,6 @@ $(document).ready(function(){
             $('#name').val(data.name);
 	        $('#password').val(data.password);
          }; 
-
     })
 })
 
