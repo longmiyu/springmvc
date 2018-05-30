@@ -112,7 +112,7 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 		
 		Map<String, Object> map = this.queryMapBySql(sql.toString());
 		System.out.println(map);
-		return null;
+		return map;
 	}
 	
 }

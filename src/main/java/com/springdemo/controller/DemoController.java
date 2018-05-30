@@ -43,7 +43,7 @@ public class DemoController {
     	System.out.println(name);
     	System.out.println(password);
     	
-		return "demo";
+		return "userLogin";
     	
     };   
     @RequestMapping("/login1")
@@ -114,10 +114,12 @@ public class DemoController {
     	
     }
    @RequestMapping("/userLogin")
-    public String userLogin(@RequestBody(required=true) Map<String,Object> mp) {
+    public String userLogin(@RequestBody(required=true) Map<String,Object> mp,Map retrunMp) {
 	   
 	   Map<String,Object> map =ds.userLogin(mp);
-		return null;
+	   retrunMp= map;
+
+	   return "forward:index.jsp";
     	
     }
 }

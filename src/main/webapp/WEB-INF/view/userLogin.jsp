@@ -36,9 +36,9 @@
 <script type="text/javascript">
 	layui.use('form', function(){
 		 var form = layui.form;
+		 
 		  //监听提交
-		  form.on('submit(login)', function(data){
-			  alert(data.field)
+		  form.on('submit(login)', function(data){ 
 			  ajaxJson("userLogin", data.field, "json");  
 		    return false;
 		  });

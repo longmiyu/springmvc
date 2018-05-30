@@ -1,5 +1,6 @@
 package com.springdemo.utils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -102,7 +103,6 @@ public abstract class HibernateBaseDao extends HibernateDaoSupport{
 	/**
 	 * 执行sql语句将其转换成Map
 	 * 
-	 * @param isOraConvertSql 是否oracle库下自动转换Sql
 	 * @param sql
 	 * @param paramObj
 	 * @return
@@ -116,7 +116,14 @@ public abstract class HibernateBaseDao extends HibernateDaoSupport{
 				query.setParameter(i, paramObj[i]);
 			}
 		} 
-		return  query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).getHints();	
+		Map<String, Object> mp = new HashMap<String, Object>();
+		List<?>list = query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+		for(int i=0;i<list.size();i++){  
+			mp = (Map)list.get(i);
+			
+			
+		}
+		return mp ;	
 	}
 	
 }
