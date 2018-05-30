@@ -12,18 +12,21 @@
 <title>首页</title>
 <script type="text/javascript">
 	function login(){
-		
+		var param={
+				title:"用户登录",
+				hight:"470px",
+				width:"300px",	
+				url:"userLogin"	
+			}
+		view.openDilog(param)	
 	}
-	
 	function register(){
-		
 		var param={
 			title:"人员添加",
 			hight:"500px",
 			width:"600px",	
 			url:"register"	
 		}
-
 		view.openDilog(param)
 	}
 </script>
@@ -33,7 +36,11 @@
 		<div>
 			<button id="login" name="login" class="layui-btn layui-btn-radius layui-btn-normal" onclick="login()">登录</button>
 			<button id="register" name="register" class="layui-btn layui-btn-radius" onclick="register()">注册</button>
+			<button id="register" name="register" class="layui-btn layui-btn-radius" onclick="query()">查询用户2</button>
 		</div>
 	</div>
+	
+	
+	
 </body>
 </html>

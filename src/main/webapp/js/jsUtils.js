@@ -5,13 +5,13 @@
 document.write("<script language=javascript src='<%=request.getContextPath()%>/js/layer.js'></script>");*/
 //作为对象方法，函数写法，这里创建了两个函数外面用{}包裹起来
 var view = {		
-	openDilog:function(param,url){
+	openDilog:function(param){
 		debugger;
 		var title=param.title;
 		var hight=param.hight;
 		var width=param.width;
 		var url=param.url;
-		
+		 
 		layer.open({
 			 type: 2,
 		      title: title,
@@ -29,8 +29,7 @@ var view = {
 }
 
  function ajaxJson (url,param,dataType,success){
-param =JSON.stringify(param)
-alert(param)
+	param =JSON.stringify(param)
 	ajax({
  	    url:url, //请求地址
  	    type:'POST',   //请求方式

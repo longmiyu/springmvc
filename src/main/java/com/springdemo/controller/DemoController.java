@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.springdemo.entity.users;
 import com.springdemo.service.DemoService;
 
+import net.sf.json.JSONArray;
+
 @Controller
 @RequestMapping("/demo")
 public class DemoController {
@@ -98,6 +100,24 @@ public class DemoController {
     public Map<String,Object>  saveUpUser(@RequestBody(required=true) Map<String,Object> mp) {
     	System.out.println(mp);
 		return ds.saveUpUser(mp);
+    	
+    }
+    
+    @RequestMapping("/queryUpUser")
+    @ResponseBody
+    public List<Map<String,Object>> queryUpUser(){
+    	List<Map<String,Object>>aa = ds.queryUpUser();
+    	JSONArray jsonStr = JSONArray.fromObject(aa); 
+    	
+    	System.out.println(aa);
+		return aa;
+    	
+    }
+   @RequestMapping("/userLogin")
+    public String userLogin(@RequestBody(required=true) Map<String,Object> mp) {
+	   
+	   Map<String,Object> map =ds.userLogin(mp);
+		return null;
     	
     }
 }

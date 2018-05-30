@@ -89,5 +89,30 @@ public class DemoDaoImpl extends HibernateBaseDao implements DemoDao{
 		resultMp.put("msg", msg);
 		return resultMp;
 	}
+
+	/**
+	 * 职工查询
+	 */
+	@Override
+	public List<Map<String, Object>> queryUpUser() {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select user_id , create_date ,  email ,  user_age , user_code , user_name , user_password , user_sex , user_type from up_user");
+		
+		return this.queryListMapBySql(sql.toString());
+	}
+	/**
+	 * 职工查询加条件
+	 */
+	@Override
+	public Map<String, Object> userLogin(Map<String, Object> mp) {
+
+		StringBuffer sql = new StringBuffer();
+		sql.append("select user_id , create_date ,  email ,  user_age , user_code , user_name , user_password , user_sex , user_type from up_user");
+		sql.append(" where user_code='").append(mp.get("userCode")).append("' and user_password='").append(mp.get("userPassword")).append("'");
+		
+		Map<String, Object> map = this.queryMapBySql(sql.toString());
+		System.out.println(map);
+		return null;
+	}
 	
 }

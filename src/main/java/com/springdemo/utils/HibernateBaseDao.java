@@ -99,5 +99,24 @@ public abstract class HibernateBaseDao extends HibernateDaoSupport{
 		
 	}
 	
+	/**
+	 * 执行sql语句将其转换成Map
+	 * 
+	 * @param isOraConvertSql 是否oracle库下自动转换Sql
+	 * @param sql
+	 * @param paramObj
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> queryMapBySql(String sql, Object... paramObj) {
+		Query query = this.getSession().createNativeQuery(sql);
+
+		if (paramObj != null && paramObj.length > 0) {
+			for (int i = 0; i < paramObj.length; i++) {
+				query.setParameter(i, paramObj[i]);
+			}
+		} 
+		return  query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).getHints();	
+	}
 	
 }

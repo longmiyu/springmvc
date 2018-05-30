@@ -34,8 +34,15 @@ public void setDao(DemoDao dao) {
 	}
 	@Override
 	public Map<String, Object> saveUpUser(Map<String, Object> mp) {
-		// TODO Auto-generated method stub
 		return dao.saveUpUser(mp);
+	}
+	@Override
+	public List<Map<String, Object>> queryUpUser() {
+		return dao.queryUpUser();
+	}
+	@Override
+	public Map<String, Object> userLogin(Map<String, Object> mp) {
+		return dao.userLogin(mp);
 	}
 
 }
