@@ -39,7 +39,9 @@
 		 
 		  //监听提交
 		  form.on('submit(login)', function(data){ 
-			  ajaxJson("userLogin", data.field, "json");  
+			  ajaxJson("userLogin", data.field, "json"); 
+			  
+			  parent.location.href="openDilog?url=confim";  
 		    return false;
 		  });
 });

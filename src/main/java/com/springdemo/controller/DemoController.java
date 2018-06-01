@@ -24,6 +24,7 @@ import net.sf.json.JSONArray;
 public class DemoController {
 	@Resource
 	private DemoService ds;
+	@Autowired
 
     public DemoService getDs() {
 		return ds;
@@ -43,7 +44,7 @@ public class DemoController {
     	System.out.println(name);
     	System.out.println(password);
     	
-		return "userLogin";
+		return "login";
     	
     };   
     @RequestMapping("/login1")
@@ -86,6 +87,8 @@ public class DemoController {
      */
     @RequestMapping("/openDilog")
     public String openDilog(String url) {
+    	
+    	System.out.println(url);
 		return url;
 
 	}
@@ -99,6 +102,8 @@ public class DemoController {
     @ResponseBody
     public Map<String,Object>  saveUpUser(@RequestBody(required=true) Map<String,Object> mp) {
     	System.out.println(mp);
+    	this.openDilog(url);
+    	
 		return ds.saveUpUser(mp);
     	
     }
@@ -114,12 +119,12 @@ public class DemoController {
     	
     }
    @RequestMapping("/userLogin")
-    public String userLogin(@RequestBody(required=true) Map<String,Object> mp,Map retrunMp) {
+   @ResponseBody
+    public  Map<String,Object> userLogin(@RequestBody(required=true) Map<String,Object> mp,Map retrunMp) {
 	   
 	   Map<String,Object> map =ds.userLogin(mp);
 	   retrunMp= map;
-
-	   return "forward:index.jsp";
+	   return map;
     	
     }
 }

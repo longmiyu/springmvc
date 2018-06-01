@@ -4,6 +4,7 @@
 /*document.write("<script language=javascript src='<%=request.getContextPath()%>/js/query-3.2.1.min.js'></script>");
 document.write("<script language=javascript src='<%=request.getContextPath()%>/js/layer.js'></script>");*/
 //作为对象方法，函数写法，这里创建了两个函数外面用{}包裹起来
+
 var view = {		
 	openDilog:function(param){
 		debugger;
@@ -23,7 +24,8 @@ var view = {
 		      content: "openDilog?url="+url+""
 			});	
 		}
-		,run2:function(){
+		,herf:function(param){
+			alert(param)
 		alert('这个必须放在一个对象内部，放在外边会出错！');//这里是你函数的内容
 		}
 }
