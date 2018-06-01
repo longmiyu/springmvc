@@ -24,7 +24,6 @@ import net.sf.json.JSONArray;
 public class DemoController {
 	@Resource
 	private DemoService ds;
-	@Autowired
 
     public DemoService getDs() {
 		return ds;
@@ -102,7 +101,6 @@ public class DemoController {
     @ResponseBody
     public Map<String,Object>  saveUpUser(@RequestBody(required=true) Map<String,Object> mp) {
     	System.out.println(mp);
-    	this.openDilog(url);
     	
 		return ds.saveUpUser(mp);
     	
